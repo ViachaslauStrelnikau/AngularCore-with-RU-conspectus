@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Project, ProjectsService} from "@workshop/core-data";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-projects',
@@ -6,45 +8,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  primaryColor='red';
-  projects = [
-    {
-      id: '1',
-      title: 'Project One',
-      details: 'This is a sample project',
-      percentComplete: 20,
-      approved: false,
-    },
-    {
-      id: '2',
-      title: 'Project Two',
-      details: 'This is a sample project',
-      percentComplete: 40,
-      approved: false,
-    },
-    {
-      id: '3',
-      title: 'Project Three',
-      details: 'This is a sample project',
-      percentComplete: 100,
-      approved: true,
-    }
-  ];
-  selectedProject;
+  primaryColor = 'red';
+  projects$;
+  selectedProject: Project;
 
-  constructor() { }
+  constructor(private projectsService: ProjectsService) {
+  }
 
   ngOnInit() {
-
+    this.getProjects();
   }
 
-  selectProject(project)
-  {
-      this.selectedProject=project;
+  selectProject(project) {
+    this.selectedProject = project;
   }
 
-  cancel()
+  getProjects() {
+
+    this.projects$=this.projectsService.all();
+    // this.projectsService.all()
+    //   .subscribe((result:any)=>this.projects=result);
+  }
+
+  deleteProject(project)
+    {
+      this.projectsService.delete(project.id).subscribe(resulet=>this.getProjects());
+    }
+  createProject(project)
   {
+    this.projectsService.create(project).subscribe(result=>this.getProjects());
+  }
+
+  updateProject(project)
+  {
+    this.projectsService.update(project).subscribe(result=>this.getProjects());
+  }
+
+  cancel() {
     this.selectProject(null);
   }
 }
