@@ -17,7 +17,20 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.getProjects();
+    this.resetProject();
   }
+
+  resetProject() {
+    const emptyProject: Project = {
+      id: null,
+      title: '',
+      details: '',
+      percentComplete: 0,
+      approved: false,
+    }
+    this.selectProject(emptyProject);
+  }
+
 
   selectProject(project) {
     this.selectedProject = project;
@@ -36,15 +49,37 @@ export class ProjectsComponent implements OnInit {
     }
   createProject(project)
   {
-    this.projectsService.create(project).subscribe(result=>this.getProjects());
+    this.projectsService.create(project)
+      .subscribe(result=>
+      {
+        this.getProjects();
+        this.resetProject();
+      });
   }
 
   updateProject(project)
   {
-    this.projectsService.update(project).subscribe(result=>this.getProjects());
+    this.projectsService.update(project)
+      .subscribe(result=>
+      {
+        this.getProjects();
+        this.resetProject();
+      });
   }
 
   cancel() {
-    this.selectProject(null);
+    this.resetProject();
+  }
+
+  saveProject(project)
+  {
+    if(project.id)
+    {
+      this.updateProject(project);
+    }
+    else
+    {
+      this.createProject(project);
+    }
   }
 }
