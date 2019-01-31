@@ -94,7 +94,7 @@
   "projects": [
     {
       "id": "1",
-      "title": "Project HOLLA!",
+      "title": "Project HOLLA!rrr",
       "details": "This is a sample project",
       "percentComplete": 20,
       "approved": false,
@@ -105,7 +105,7 @@
     },
     {
       "id": "2",
-      "title": "Project Two",
+      "title": "Project Twoddd",
       "details": "This is a sample project",
       "percentComplete": 40,
       "approved": true,
@@ -113,20 +113,6 @@
       "targetDate": null,
       "completionDate": null,
       "customerId": "3"
-    },
-    {
-      "id": "NaLriMg",
-      "title": "TEST Project!",
-      "details": "TEST",
-      "percentComplete": 89,
-      "approved": true
-    },
-    {
-      "id": "nh4jg-X",
-      "title": "new",
-      "details": "new Details",
-      "percentComplete": 72,
-      "approved": false
     }
   ]
 }
