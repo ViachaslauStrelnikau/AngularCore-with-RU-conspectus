@@ -1,4 +1,9 @@
-# AngularCoreWorkshop
+# В репозитории есть документ angular-core.docx, который содержит пошаговые действия из видео курса  https://frontendmasters.com/courses/angular-core/
+
+Оригинальный репозиторий находится по адрессу
+
+https://github.com/onehungrymind/angular-core-workshop
+# AngularCoreWorkshop 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
